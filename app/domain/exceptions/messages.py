@@ -4,9 +4,14 @@ from domain.exceptions.base import ApplicationException
 
 
 @dataclass(eq=False)
-class TextTooLongException(ApplicationException):
+class TitleTooLongException(ApplicationException):
     text: str
     
     @property
     def message(self):
-        return f'Message text is too long "{self.text[:255]}..."'
+        return f'Title is too long "{self.text[:255]}..."'
+    
+class EmptyTextException(ApplicationException):
+    @property
+    def message(self):
+        return 'Message text cannot be empty'
